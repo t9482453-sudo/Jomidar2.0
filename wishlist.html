@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wishlist | Jomidar 2.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/cart.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+</head>
+<body>
+  <div class="offline-banner" id="offlineBanner">⚠️ You are offline</div>
+  <div class="spinner-overlay" id="spinnerOverlay"><div class="spinner"></div></div>
+  <div class="toast-container" id="toastContainer"></div>
+  <nav id="navbar"></nav>
+  <main>
+    <div class="section-heading">
+      <h1 style="font-size:1.75rem;font-weight:800">My Wishlist</h1>
+      <span id="wishlistCount" style="font-size:0.9375rem;color:var(--text-muted)"></span>
+    </div>
+    <div id="wishlistContent">
+      <div class="wishlist-grid" id="wishlistGrid">
+        <div class="skeleton" style="height:320px;border-radius:var(--radius-lg)"></div>
+        <div class="skeleton" style="height:320px;border-radius:var(--radius-lg)"></div>
+        <div class="skeleton" style="height:320px;border-radius:var(--radius-lg)"></div>
+        <div class="skeleton" style="height:320px;border-radius:var(--radius-lg)"></div>
+      </div>
+    </div>
+  </main>
+  <footer id="footer"></footer>
+  <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true">
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <div class="drawer-panel"></div>
+  </div>
+  <script type="module" src="./js/wishlist.js"></script>
+</body>
+</html>

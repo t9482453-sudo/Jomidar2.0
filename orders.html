@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders | Jomidar 2.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/profile.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+</head>
+<body>
+  <div class="offline-banner" id="offlineBanner">⚠️ You are offline</div>
+  <div class="spinner-overlay" id="spinnerOverlay"><div class="spinner"></div></div>
+  <div class="toast-container" id="toastContainer"></div>
+  <nav id="navbar"></nav>
+  <main>
+    <div class="section-heading" style="margin-bottom:1.5rem">
+      <h1 style="font-size:1.75rem;font-weight:800">My Orders</h1>
+    </div>
+    <!-- Filter tabs -->
+    <div class="filters-bar" style="margin-bottom:1.5rem" role="group" aria-label="Filter orders">
+      <button class="filter-chip active" data-status="all">All Orders</button>
+      <button class="filter-chip" data-status="pending">Pending</button>
+      <button class="filter-chip" data-status="processing">Processing</button>
+      <button class="filter-chip" data-status="shipped">Shipped</button>
+      <button class="filter-chip" data-status="delivered">Delivered</button>
+      <button class="filter-chip" data-status="cancelled">Cancelled</button>
+    </div>
+    <div id="ordersContent">
+      <div class="order-card"><div class="skeleton" style="height:140px;border-radius:var(--radius)"></div></div>
+      <div class="order-card" style="margin-top:0.875rem"><div class="skeleton" style="height:140px;border-radius:var(--radius)"></div></div>
+    </div>
+  </main>
+  <footer id="footer"></footer>
+  <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true">
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <div class="drawer-panel"></div>
+  </div>
+  <script type="module" src="./js/orders.js"></script>
+</body>
+</html>

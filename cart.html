@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart | Jomidar 2.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/cart.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+</head>
+<body>
+  <div class="offline-banner" id="offlineBanner">⚠️ You are offline</div>
+  <div class="spinner-overlay" id="spinnerOverlay"><div class="spinner"></div></div>
+  <div class="toast-container" id="toastContainer"></div>
+  <nav id="navbar"></nav>
+  <main>
+    <h1 class="cart-page-title">Shopping Cart</h1>
+    <div id="cartContent">
+      <div class="cart-layout">
+        <div class="cart-items-col" id="cartItemsCol">
+          <div class="skeleton" style="height:120px;border-radius:var(--radius);margin-bottom:0.875rem"></div>
+          <div class="skeleton" style="height:120px;border-radius:var(--radius);margin-bottom:0.875rem"></div>
+          <div class="skeleton" style="height:120px;border-radius:var(--radius)"></div>
+        </div>
+        <aside class="order-summary-panel" id="summaryPanel">
+          <div class="glass-card">
+            <h3>Order Summary</h3>
+            <div class="skeleton" style="height:180px;border-radius:8px"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer id="footer"></footer>
+  <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true">
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <div class="drawer-panel"></div>
+  </div>
+  <script type="module" src="./js/cart.js"></script>
+</body>
+</html>

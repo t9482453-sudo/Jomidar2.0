@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile | Jomidar 2.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/profile.css">
+  <link rel="stylesheet" href="./css/cart.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+</head>
+<body>
+  <div class="offline-banner" id="offlineBanner">⚠️ You are offline</div>
+  <div class="spinner-overlay" id="spinnerOverlay"><div class="spinner"></div></div>
+  <div class="toast-container" id="toastContainer"></div>
+  <nav id="navbar"></nav>
+  <main>
+    <div class="profile-layout">
+      <!-- Sidebar -->
+      <aside class="profile-sidebar glass-card" style="overflow:hidden;padding:0">
+        <div class="profile-avatar-wrap">
+          <img src="https://ui-avatars.com/api/?name=User&background=2563eb&color=fff" class="profile-avatar" id="avatarImg" alt="Profile photo" title="Click to change photo">
+          <input type="file" id="avatarInput" accept="image/*" style="display:none" aria-label="Upload profile photo">
+          <div class="profile-name" id="profileName">Loading…</div>
+          <div class="profile-email" id="profileEmail"></div>
+          <div class="profile-badge"><span class="badge badge-primary">Customer</span></div>
+        </div>
+        <nav class="profile-nav" role="navigation" aria-label="Profile sections">
+          <button class="profile-nav-item active" data-section="overview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span>Overview</span>
+          </button>
+          <button class="profile-nav-item" data-section="editProfile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>Edit Profile</span>
+          </button>
+          <button class="profile-nav-item" data-section="addresses">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Addresses</span>
+          </button>
+          <button class="profile-nav-item" data-section="orders">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            <span>My Orders</span>
+          </button>
+          <button class="profile-nav-item" data-section="notifications">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span>Notifications</span>
+          </button>
+          <div class="drawer-divider"></div>
+          <button class="profile-nav-item" id="logoutBtn" style="color:var(--danger)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            <span>Sign Out</span>
+          </button>
+        </nav>
+      </aside>
+
+      <!-- Content -->
+      <div class="profile-content-col">
+        <!-- Overview -->
+        <div class="profile-section active" id="section-overview">
+          <div class="profile-section-header"><h2>Overview</h2></div>
+          <div class="profile-stats" id="profileStats"></div>
+          <div class="profile-card">
+            <h3 style="font-weight:700;margin-bottom:0.875rem">Recent Orders</h3>
+            <div id="recentOrdersOverview"></div>
+            <a href="./orders.html" class="btn-secondary btn-sm" style="margin-top:0.875rem;display:inline-flex">View All Orders →</a>
+          </div>
+        </div>
+
+        <!-- Edit Profile -->
+        <div class="profile-section" id="section-editProfile">
+          <div class="profile-section-header"><h2>Edit Profile</h2></div>
+          <div class="profile-card">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" id="editName" placeholder="Your full name" autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" id="editPhone" placeholder="+880 1XXX-XXXXXX" autocomplete="tel">
+              </div>
+              <div class="form-group col-span-2">
+                <label class="form-label">Email Address</label>
+                <input type="email" id="editEmail" disabled style="opacity:0.6;cursor:not-allowed" autocomplete="email">
+                <span class="form-hint">Email cannot be changed</span>
+              </div>
+              <div class="form-group col-span-2">
+                <label class="form-label">Bio</label>
+                <textarea id="editBio" rows="3" placeholder="Tell us about yourself…"></textarea>
+              </div>
+            </div>
+            <button class="btn-primary" id="saveProfileBtn" style="margin-top:0.5rem">Save Changes</button>
+          </div>
+          <div class="profile-card" style="margin-top:1rem">
+            <h3 style="font-weight:700;margin-bottom:0.875rem">Change Password</h3>
+            <div class="form-group"><label class="form-label">New Password</label><input type="password" id="newPassword" placeholder="Min. 6 characters"></div>
+            <div class="form-group"><label class="form-label">Confirm Password</label><input type="password" id="confirmNewPassword" placeholder="Repeat password"></div>
+            <button class="btn-secondary" id="changePasswordBtn">Update Password</button>
+          </div>
+        </div>
+
+        <!-- Addresses -->
+        <div class="profile-section" id="section-addresses">
+          <div class="profile-section-header">
+            <h2>My Addresses</h2>
+            <button class="btn-primary btn-sm" id="addAddressBtn">+ Add Address</button>
+          </div>
+          <div id="addressesList"></div>
+        </div>
+
+        <!-- Orders -->
+        <div class="profile-section" id="section-orders">
+          <div class="profile-section-header"><h2>My Orders</h2></div>
+          <div id="profileOrdersList"></div>
+        </div>
+
+        <!-- Notifications -->
+        <div class="profile-section" id="section-notifications">
+          <div class="profile-section-header"><h2>Notifications</h2></div>
+          <div id="notificationsList"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer id="footer"></footer>
+  <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true">
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <div class="drawer-panel"></div>
+  </div>
+  <div class="modal-overlay" id="addressModal">
+    <div class="modal-card">
+      <h3 id="addressModalTitle">Add Address</h3>
+      <div class="form-grid">
+        <div class="form-group"><label class="form-label">Full Name</label><input type="text" id="addrName"></div>
+        <div class="form-group"><label class="form-label">Phone</label><input type="tel" id="addrPhone"></div>
+        <div class="form-group col-span-2"><label class="form-label">Address</label><input type="text" id="addrLine"></div>
+        <div class="form-group"><label class="form-label">City</label><input type="text" id="addrCity"></div>
+        <div class="form-group"><label class="form-label">District</label><select id="addrDistrict"><option value="">Select</option><option>Dhaka</option><option>Chittagong</option><option>Sylhet</option><option>Rajshahi</option><option>Khulna</option><option>Barishal</option><option>Rangpur</option><option>Mymensingh</option></select></div>
+        <div class="form-group col-span-2"><label class="toggle-switch"><input type="checkbox" id="addrDefault"><div class="toggle-slider"></div>Set as default address</label></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="document.getElementById('addressModal').classList.remove('active')">Cancel</button>
+        <button class="btn-primary" id="saveAddressBtn">Save Address</button>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./js/profile.js"></script>
+</body>
+</html>

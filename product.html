@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product | Jomidar 2.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/product.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+</head>
+<body>
+  <div class="offline-banner" id="offlineBanner">⚠️ You are offline</div>
+  <div class="spinner-overlay" id="spinnerOverlay"><div class="spinner"></div></div>
+  <div class="toast-container" id="toastContainer"></div>
+  <nav id="navbar"></nav>
+  <main>
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb" style="margin-bottom:1.25rem;font-size:0.875rem;color:var(--text-muted);display:flex;align-items:center;gap:0.375rem;flex-wrap:wrap;">
+      <a href="./index.html" style="color:var(--text-muted);hover:color:var(--primary)">Home</a>
+      <span>/</span>
+      <span id="breadcrumbCat" style="color:var(--text-muted)">Category</span>
+      <span>/</span>
+      <span id="breadcrumbName" style="color:var(--text);font-weight:500">Product</span>
+    </nav>
+
+    <div id="productContent">
+      <!-- Skeleton -->
+      <div class="product-detail-grid" id="productSkeleton">
+        <div class="skeleton" style="aspect-ratio:1;border-radius:var(--radius-lg)"></div>
+        <div style="display:flex;flex-direction:column;gap:1rem">
+          <div class="skeleton" style="height:2rem;border-radius:8px;width:60%"></div>
+          <div class="skeleton" style="height:1.25rem;border-radius:8px;width:40%"></div>
+          <div class="skeleton" style="height:3rem;border-radius:8px;width:50%"></div>
+          <div class="skeleton" style="height:1rem;border-radius:8px"></div>
+          <div class="skeleton" style="height:1rem;border-radius:8px;width:80%"></div>
+          <div class="skeleton" style="height:48px;border-radius:8px;margin-top:1rem"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Products -->
+    <div class="related-section" id="relatedSection" style="display:none">
+      <h2 class="section-heading">Related Products</h2>
+      <div class="products-grid" id="relatedGrid"></div>
+    </div>
+  </main>
+  <footer id="footer"></footer>
+  <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true">
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <div class="drawer-panel"></div>
+  </div>
+  <script type="module" src="./js/products.js"></script>
+</body>
+</html>
